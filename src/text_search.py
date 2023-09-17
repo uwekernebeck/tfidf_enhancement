@@ -1,4 +1,4 @@
-"""Implements the search for texts using a BM25 based score."""
+"""Implements the similarity search for texts using an extended BM25 score formular"""
 
 from typing import List
 import math
@@ -73,15 +73,14 @@ class TextSearch:
         length_of_text_in_words = self.text_index.get_word_length(text_index)
         number_of_texts_containing_word = len(self.text_index.get_texts_for_element(keyword))
 
+        if keyword.is_category:
+            number_of_elements_of_category = \
+                self.text_index.get_number_of_category_elements(keyword.category_label)
+            frequency_in_text = frequency_in_text / number_of_elements_of_category
+
         idf = math.log((total_number_of_texts - number_of_texts_containing_word + 0.5) / (
                     number_of_texts_containing_word + 0.5) + 1)
         tdf = (frequency_in_text * (k1 + 1)) / (
                     frequency_in_text + k1 * (1 - b + b * length_of_text_in_words / average_length_of_texts)
                 )
-        number_of_elements_of_category = 0
-        if keyword.is_category:
-            number_of_elements_of_category = \
-                self.text_index.get_number_of_category_elements(keyword.category_label)
-        if keyword.is_category and number_of_elements_of_category > 0:
-            return idf * tdf / number_of_elements_of_category
         return idf * tdf
