@@ -3,12 +3,12 @@
 ## Introduction
 This is a prototype implementation to show how to
 add similarity search to a TFIDF (Term Frequency Inverse Document Frequency) search
-as it is used in Elasticsearch / Lucene.
+as it is used in Elasticsearch/Lucene.
 
-The idea is to use sets of similar words instead in addition to
+The idea is to use sets of similar words in addition to
 exact word matches. The scoring formular is extended and a way is shown to
 generate these sets of similar words using a language model. In this case, 
-a language models from the NLP software library spaCy is used.
+a language model from the NLP software library spaCy is used.
 
 ## Installation
 Provide a virtual environment with
