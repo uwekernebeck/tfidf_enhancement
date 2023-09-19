@@ -15,7 +15,7 @@ from src.word_tokenizer import WordTokenizer
 
 class WordSetBuilder:
     """
-        To create the word sets necessary for the improved TFIDF text scoring this
+        To create the word sets necessary for the improved TFIDF text scoring, this
         class uses the word embeddings of an english spacy language model to
         create the words sets automatically.
     """

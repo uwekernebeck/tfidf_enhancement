@@ -8,7 +8,7 @@ from src.word_tokenizer import WordTokenizer
 
 class WordSetBuilderTestCase(unittest.TestCase):
     def test_create_word_sets_from_file(self):
-        file_name = os.path.join(Path(__file__).parent, 'data/train.jsonl')
+        file_name = os.path.join(Path(__file__).parent, 'data', 'train.jsonl')
         tokenizer = WordTokenizer()
         word_set_builder = WordSetBuilder(tokenizer)
         word_sets = word_set_builder.create_sets_from_sts_file(file_name)

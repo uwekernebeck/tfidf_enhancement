@@ -65,7 +65,7 @@ class TextSearchTestCase(unittest.TestCase):
         return word_set_manager
 
     def __create_sts_file_word_set_manager(self) -> WordSetManager:
-        file_name = os.path.join(Path(__file__).parent, 'data/train.jsonl')
+        file_name = os.path.join(Path(__file__).parent, 'data', 'train.jsonl')
         tokenizer = WordTokenizer()
         word_set_builder = WordSetBuilder(tokenizer)
         word_sets = word_set_builder.create_sets_from_sts_file(file_name)

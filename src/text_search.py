@@ -52,7 +52,7 @@ class TextSearch:
                 else:
                     score_value += score
             if number_of_category_keywords > 0:
-                total_score = score_value + score_categories / number_of_category_keywords
+                total_score = score_value + math.log(1 + score_categories)
             else:
                 total_score = score_value
             result.append(TextIndexAndScore(idx, total_score))

@@ -54,13 +54,3 @@ class WordSetManager:
             else:
                 self.element_to_word_sets_map[element] = set()
                 self.element_to_word_sets_map[element].add(new_word_set)
-
-    def save(self, file_name: str):
-        with open(file_name, mode='w', encoding='utf-8') as file:
-            json.dump(self, file)
-
-    def load(self, file_name: str):
-        with open(file_name, mode='r', encoding='utf-8') as file:
-            word_set_manager = json.load(file)
-            self.element_to_word_sets_map = word_set_manager.element_to_word_sets_map
-            self.category_to_sets_map = word_set_manager.category_to_sets_map
