@@ -26,7 +26,7 @@ class WordSetBuilder:
 
     def create_sets_from_sts_file(self, file_name: str, number_of_lines: int = 100) -> List[Set[str]]:
         """
-            Using a file from the STS benchmark (Semantic Textual Similarity) to create a word list
+            Uses a file from the STS benchmark (Semantic Textual Similarity) to create a word list
         :param file_name: Name of the file from the STS benchmark
         :param number_of_lines: Number of lines that should be used for the set creation
         :return: Provides the found word sets
@@ -70,7 +70,7 @@ class WordSetBuilder:
 
     def __create_word_sets(self, words: List[Token]) -> Dict[str, Set[str]]:
         """
-            Uses to cluster algorithms to find a sets of words based on the word embedding
+            Uses cluster algorithms to find a sets of words based on the word embedding
             similarity.
         :param words: List of tokens containing the embedding vectors
         :return: Provides a dictionary with category label as key and the set of words as value
@@ -80,7 +80,7 @@ class WordSetBuilder:
         word_set = list(word_to_vector_map.keys())
         token_vectors = [word_to_vector_map[word] for word in word_set if word in word_to_vector_map.keys()]
 
-        # create clusters for small word sets
+        # create clusters even for small word sets
         optics = sklearn.cluster.OPTICS(min_samples=2)
         optics.fit(token_vectors)
 
